@@ -5,6 +5,9 @@ Domain proyek yang dipilih dalam proyek _machine learning_ adalah bisnis dengan 
 
 - Latar Belakang
 
+<p align="center">
+  <img width="460" height="300" src="https://user-images.githubusercontent.com/72246401/137119365-bb1eebe2-6f00-4cea-a183-0f25567cc7ce.png">
+</p>
 
 Pengguna smartphone Indonesia juga bertumbuh dengan pesat. _Smartphone_ (Ponsel) sudah menjadi kebutuhan primer. Pesatnya pertumbuhan _smartphone_ menjadi fenomena yang tidak bisa dihindari, karena masyarakat membutuhkan informasi dan dipakai juga untuk mengakses internet[[1](https://techno.okezone.com/read/2014/05/13/57/984293/di-indonesia-smartphone-sudah-menjadi-kebutuhan-utama)]. Akibatnya banyak penipuan dengan menjual _smartphone_ yang diatas harga rata-rata.
 
@@ -30,13 +33,20 @@ Solusi yang dapat dilakukan untuk memenuhi tujuan dari proyek ini sebagai beriku
     - Melakukan **standardisasi data** pada fitur numerik dengan **StandarScaler**.
 - Untuk pembuatan model menggunakan algoritma **_Support Vector Machine (SVM)_** sebagai model _baseline_. Algoritma tersebut dipilih karena dimensi data tinggi, jumlah data hasil observasi banyak, dan cocok untuk kasus klasifikasi. **_Support Vector Machine (SVM)_** digunakan untuk mencari _hyperplane_ terbaik dengan memaksimalkan jarak antar kelas. _Hyperplane_ adalah sebuah fungsi yang dapat digunakan untuk pemisah antar kelas. Tujuan dari algoritma SVM adalah untuk menemukan _hyperplane_ terbaik dalam ruang berdimensi-N (ruang dengan N-jumlah fitur) yang berfungsi sebagai pemisah yang jelas bagi titik-titik data input. Untuk proyek kami menggunakan SVM Klasifikasi non Linear. Cara kerja **_Support Vector Machine (SVM)_** Klasifikasi non Linear sebagai berikut.
     - Memuat data.
+    - Transformasikan data menjadi ruang baru sehingga batas linier dapat digunakan untuk memisahkan tupel.
     - Untuk pemisahan data menggunakan beberapa fungsi kernel berikut.
-        - Linear
         - RBF (Radial Basis Function) atau Gaussian kernel
+        ![gaussian-kernel](https://user-images.githubusercontent.com/72246401/137120936-2bec6b2b-0df2-4a3b-a94b-e95a7c93560b.png)
         - Polinomial
-        
+        ![polynomial-kernel](https://user-images.githubusercontent.com/72246401/137120934-9b86cf3e-ec68-4b4b-affd-52674ab3031d.png)
         - Sigmoid
-    - 
+        ![sigmoid-kernel](https://user-images.githubusercontent.com/72246401/137120935-4c1b263b-69f7-4709-9708-2283a2b3a833.png)
+    - Proses pembelajaran:
+        - Fase _training_:
+            - Minimize: <img src="https://user-images.githubusercontent.com/72246401/137123514-dc434933-7f57-4f2f-87c4-d696478111ab.png" width="48">
+            - Target: <img src="https://user-images.githubusercontent.com/72246401/137123516-74d6939e-37fb-486a-83c5-c284eb1e49f2.png" width="48">
+        - Fase _testing_: <img src="https://user-images.githubusercontent.com/72246401/137123510-107b5ee1-a0ef-4a64-a420-457a7c4c504a.png" width="48">
+        
 
 ## Data Understanding
 Pada dataset yang kita gunakan [SBA Approval Loan](https://raw.githubusercontent.com/kurnivan-ny/predictive.analysis.io/main/small_business_loan_approval.csv) terdapat 2.102 baris (records atau jumlah pengamatan) dan 34 kolom.Kemudian kita hanya menggunakan 7 kolom saja, karena 7 kolom tersebut mengandung informasi yang dapat digunakan pada Predictive Analysis. Deskripsi variabel yang kita gunakan sebagai berikut.

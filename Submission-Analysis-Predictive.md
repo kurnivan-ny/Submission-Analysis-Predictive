@@ -218,7 +218,7 @@ Pada proyek ini, kami menggunakan _confusion matriks_ dan _classification report
   
 Pada model _baseline_ memiliki nilai akurasi yang cukup baik yaitu 86,25% dan nilai _f1 score_, _recall_, serta _precision_ cukup baik. Setelah dilakukan _Hyper Parameter Tuning_ nilai akurasinya meningkat menjadi 95,25% dan nilai _f1 score_, _recall_, serta _precision_ meningkat dari model _baseline_.
 
-Dari _confusion matriks_ dan _classification report_, dapat dilihat bahwa model yang dikembangkan dengan _Hyper Parameter Tuning_ memiliki nilai _false positif_ serta _false negatif_ di _confusion matriks_ dan _f1 score_, _recall_, serta _precision_ di _classification report_ lebih baik dari model _baseline_. Maka untuk proyek ini menggunakan model yang dikembangkan dengan _Hyper Parameter Tuning_.
+Dari _confusion matriks_ dan _classification report_, dapat dilihat bahwa model yang dikembangkan dengan _Hyper Parameter Tuning_ memiliki nilai _false positif_ serta _false negatif_ di _confusion matriks_ dan nilai _f1 score_, _recall_, serta _precision_ di _classification report_ lebih baik dari model _baseline_. Maka dari itu, maka untuk proyek ini menggunakan model yang dikembangkan dengan _Hyper Parameter Tuning_.
 
 # Referensi:
 [1] https://techno.okezone.com/read/2014/05/13/57/984293/di-indonesia-smartphone-sudah-menjadi-kebutuhan-utama

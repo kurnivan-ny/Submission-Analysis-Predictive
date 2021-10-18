@@ -162,31 +162,13 @@ Seperti yang sudah dijelaskan pada bagian _Solution Statements_, berikut adalah 
 Setelah melakukan Persiapan Data _(Data Preparation)_, maka tahap selanjutnya modeling. Modeling menggunakan 2 model yaitu pembuatan model _baseline_ dan pembuatan model yang dikembangkan.
 
 - Model _baseline_
+
   Pada tahap ini, saya membuat model dasar dengan menggunakan modul dari scikit-learn yaitu [SVC](https://scikit-learn.org/stable/modules/generated/sklearn.svm.SVC.html) dengan parameter _default_. Kemudian dilakukan prediksi pada data test.
-  
-  Hasil dari model _baseline_ sebagai berikut.
-  
-  ![cf_model baseline](https://user-images.githubusercontent.com/72246401/137147015-29a593c9-99b4-43e4-9e43-9394135eeaa7.jpg)
-  
-- Model yang dikembangkan
-  Setelah melihat kinerja dari model _baseline_, untuk model dapat bekerja lebih optimal maka diperlukan _Hyper Parameter Tuning_. _Hyper Parameter Tuning_ digunakan untuk mencari parameter terbaik yang akan diterapkan pada model _baseline_. 
-  
-  Hasil dari model _baseline_ sebagai berikut.
-  
-  ![cf_model best parameter](https://user-images.githubusercontent.com/72246401/137147006-0f45b597-acb4-44c0-b147-0508dd22f2f7.jpg)
-  
-Pada model _baseline_ memiliki nilai akurasi yang cukup baik yaitu 86,25% dan nilai _f1 score_, _recall_, serta _precision_ cukup baik. Setelah dilakukan _Hyper Parameter Tuning_ nilai akurasinya meningkat menjadi 95,25% dan nilai _f1 score_, _recall_, serta _precision_ meningkat dari model _baseline_. Untuk membuktikan nilai akurasi, _f1 score_, _recall_, dan _precision_ menggunakan visualisasi pada _confusion matriks_ sebagai berikut.
-
-- Model _baseline_
-
-  ![cf_base model](https://user-images.githubusercontent.com/72246401/137133825-04434b83-0a32-4b59-b5f7-868ded7e9342.png)
 
 - Model yang dikembangkan
 
-  ![cf_best model](https://user-images.githubusercontent.com/72246401/137133824-3ae3c976-a96e-4a2b-9a0b-db9082ec6060.png)
+  Setelah melihat kinerja dari model _baseline_, untuk model dapat bekerja lebih optimal maka diperlukan _Hyper Parameter Tuning_. _Hyper Parameter Tuning_ digunakan untuk mencari parameter terbaik yang akan diterapkan pada model _baseline_. _Hyper Parameter Tuning_ menggunkan  [_Grid Search Cross Validation (CV)_](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html). _Grid Search Cross Validation (CV)_ adalah metode pemilihan kombinasi model dan hyperparameter dengan cara menguji coba satu persatu kombinasi dan melakukan validasi untuk setiap kombinasi. Tujuannya adalah menentukan kombinasi yang menghasilkan performa model terbaik yang dapat dipilih untuk dijadikan model untuk prediksi. Pada model SVC, parameter yang di _Grid Search CV_ adalah c, gamma, dan kernel. C merupakan parameter regularisasi, gamma merupakan koefisien kernel, dan kernel menggunakan rbf.
   
-Dengan hasil diatas, maka model yang dipilih adalah model yang dikembangkan.
-
 ## Evaluation
 Pada proyek ini, kami menggunakan _confusion matriks_ dan _classification report_ untuk mengevalusasi model.
 - _Confusion Matriks_
@@ -208,13 +190,36 @@ Pada proyek ini, kami menggunakan _confusion matriks_ dan _classification report
   | Precission | ![precision](https://user-images.githubusercontent.com/72246401/137153668-55d6752a-056e-491d-a108-efb468bf7b8a.png) | Menghitung seberapa baik model memprediksi label positif terhadap semua prediksi model berlabel positif |
   | Recall (Sensivity) | ![recall](https://user-images.githubusercontent.com/72246401/137153665-dfc779d7-cac1-4f23-af93-988e33fda6a5.png) |  Menghitung seberapa baik model memprediksi label positif terhadap semua label data positif |
   | F1 Score | ![F1-Score](https://user-images.githubusercontent.com/72246401/137153660-2a34b4bf-e121-4afa-93bd-ed3dd4f02400.png) | Menghitung seberapa baik hasil prediksi model (precision) dan seberapa lengkap hasil prediksinya (recall) |
+  
+ 
+ _Condusion Matriks_ pada model _baseline_ dan model yang dikembangkan dapat dilihat dibawah ini.
+ 
+ - Model _baseline_
+
+  ![cf_base model](https://user-images.githubusercontent.com/72246401/137133825-04434b83-0a32-4b59-b5f7-868ded7e9342.png)
+
+- Model yang dikembangkan
+
+  ![cf_best model](https://user-images.githubusercontent.com/72246401/137133824-3ae3c976-a96e-4a2b-9a0b-db9082ec6060.png)
+  
+  Dapat dilihat bahwa model _baseline_ memiliki _False Positif_ dan _False Positif_ yang lebih besar dibandingkan dengan model yang dikembangkan.
 
 - _Classification Report_
   
   Classification report digunakan untuk mengukur kualitas prediksi dari algoritma klasifikasi. Classification report menampilkan nilai akurasi, _f1 score_, _recall_, dan _precision_ untuk model.
 
-  ![cf_model baseline](https://user-images.githubusercontent.com/72246401/137147015-29a593c9-99b4-43e4-9e43-9394135eeaa7.jpg)
+  Hasil dari model _baseline_ sebagai berikut.
   
+  ![cf_model baseline](https://user-images.githubusercontent.com/72246401/137147015-29a593c9-99b4-43e4-9e43-9394135eeaa7.jpg)
+
+  Hasil dari model yang dikembangkan sebagai berikut.
+  
+  ![cf_model best parameter](https://user-images.githubusercontent.com/72246401/137147006-0f45b597-acb4-44c0-b147-0508dd22f2f7.jpg)
+  
+Pada model _baseline_ memiliki nilai akurasi yang cukup baik yaitu 86,25% dan nilai _f1 score_, _recall_, serta _precision_ cukup baik. Setelah dilakukan _Hyper Parameter Tuning_ nilai akurasinya meningkat menjadi 95,25% dan nilai _f1 score_, _recall_, serta _precision_ meningkat dari model _baseline_.
+
+Dari _confusion matriks_ dan _classification report_, dapat dilihat bahwa model yang dikembangkan dengan _Hyper Parameter Tuning_ memiliki nilai _false positif_ serta _false negatif_ di _confusion matriks_ dan _f1 score_, _recall_, serta _precision_ di _classification report_ lebih baik dari model _baseline_. Maka untuk proyek ini menggunakan model yang dikembangkan dengan _Hyper Parameter Tuning_.
+
 # Referensi:
 [1] https://techno.okezone.com/read/2014/05/13/57/984293/di-indonesia-smartphone-sudah-menjadi-kebutuhan-utama
 
